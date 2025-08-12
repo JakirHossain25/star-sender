@@ -80,6 +80,43 @@
         
         .nav-links li {
             margin-left: 1.8rem;
+            position: relative;
+        }
+        
+        /* Dropdown menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        
+        .nav-links li:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .dropdown-menu a {
+            color: var(--dark);
+            padding: 10px 20px;
+            display: block;
+            transition: all 0.3s;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: var(--accent);
+            transform: translateX(5px);
         }
         
         .nav-links a {
@@ -193,6 +230,50 @@
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
+        }
+        
+        /* Popular Tools Section */
+        #tools {
+            background-color: #f1f5f9;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .tool-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .tool-name {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .tool-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
         
         /* Download Section */
@@ -486,6 +567,24 @@
             #home h1 {
                 font-size: 2.2rem;
             }
+            
+            /* Mobile dropdown */
+            .dropdown-menu {
+                position: static;
+                display: none;
+                width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+            }
+            
+            .nav-links li:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown-menu.active {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -504,8 +603,18 @@
             <ul class="nav-links">
                 <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
+                <li><a href="#tools"><i class="fas fa-tools"></i> Popular Tools</a></li>
                 <li><a href="#download"><i class="fas fa-download"></i> Free Download</a></li>
                 <li><a href="#buy-now"><i class="fas fa-shopping-cart"></i> Buy Pro</a></li>
+                <li>
+                    <a href="#"><i class="fas fa-book"></i> Learn More <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://your-other-website.com/tutorials" target="_blank"><i class="fas fa-video"></i> Video Tutorials</a></li>
+                        <li><a href="https://your-other-website.com/docs" target="_blank"><i class="fas fa-file-alt"></i> Documentation</a></li>
+                        <li><a href="https://dev-pocket24hour.pantheonsite.io/" target="_blank"><i class="fas fa-blog"></i> Blog</a></li>
+                        <li><a href="https://your-other-website.com/faq" target="_blank"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    </ul>
+                </li>
                 <li><a href="#support"><i class="fas fa-headset"></i> Support</a></li>
             </ul>
         </div>
@@ -556,6 +665,58 @@
         </div>
     </section>
 
+    <!-- Popular Tools Section -->
+    <section id="tools">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Popular Tools</h2>
+                <p>Check out our other powerful marketing tools</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3 class="tool-name">Test mail import </h3>
+                    <p class="tool-description">the software  you can import  test email  in your data file.</p>
+                    <a href="https://drive.google.com/file/d/1KPcB7laU_c1gr-WWiV3i-kuPDldL-Fmv/view" class="btn btn-free" target="_blank">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="tool-name">Auto Responder</h3>
+                    <p class="tool-description">Automate your email responses and save time with smart triggers.</p>
+                    <a href="https://your-other-website.com/download/auto-responder" class="btn btn-free" target="_blank">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3 class="tool-name">Lead Scraper</h3>
+                    <p class="tool-description">Extract email addresses and contact info from websites automatically.</p>
+                    <a href="https://your-other-website.com/download/lead-scraper" class="btn btn-free" target="_blank">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="tool-name">Bulk SMS Sender</h3>
+                    <p class="tool-description">Send SMS messages to thousands of contacts with high delivery rates.</p>
+                    <a href="https://your-other-website.com/download/sms-sender" class="btn btn-free" target="_blank">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Free Download Section -->
     <section id="download">
         <div class="container">
@@ -570,7 +731,7 @@
                     </div>
                     <h3 class="download-type">Windows Version</h3>
                     <p class="download-info">Version 1.0 Lite (Free)</p>
-                    <a href="https://dev-pocket24hour.pantheonsite.io/star-sender-v4-0-0/" class="btn btn-free" target="_blank">
+                    <a href="https://drive.google.com/file/d/1Hq4caTtEXsyqHZSSEb4qPWwn0BA4v_wu/view" class="btn btn-free" target="_blank">
                         <i class="fas fa-download"></i> Download Now
                     </a>
                     <p class="password-note">Password: starsender123</p>
@@ -581,7 +742,7 @@
                     </div>
                     <h3 class="download-type">Mac Version</h3>
                     <p class="download-info">Version 1.0 Lite (Free)</p>
-                    <a href="https://dev-pocket24hour.pantheonsite.io/star-sender-v4-0-0/" class="btn btn-free" target="_blank">
+                    <a href="https://drive.google.com/file/d/1Hq4caTtEXsyqHZSSEb4qPWwn0BA4v_wu/view" class="btn btn-free" target="_blank">
                         <i class="fas fa-download"></i> Download Now
                     </a>
                     <p class="password-note">Password: starsender123</p>
@@ -682,6 +843,7 @@
                     <ul class="footer-links">
                         <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
                         <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a href="#tools"><i class="fas fa-chevron-right"></i> Popular Tools</a></li>
                         <li><a href="#download"><i class="fas fa-chevron-right"></i> Free Download</a></li>
                         <li><a href="#buy-now"><i class="fas fa-chevron-right"></i> Buy Pro</a></li>
                     </ul>
@@ -690,10 +852,10 @@
                 <div>
                     <h3>Resources</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Documentation</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tutorials</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> API Reference</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="https://your-other-website.com/tutorials" target="_blank"><i class="fas fa-chevron-right"></i> Video Tutorials</a></li>
+                        <li><a href="https://your-other-website.com/docs" target="_blank"><i class="fas fa-chevron-right"></i> Documentation</a></li>
+                        <li><a href="https://your-other-website.com/blog" target="_blank"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="https://your-other-website.com/faq" target="_blank"><i class="fas fa-chevron-right"></i> FAQ</a></li>
                     </ul>
                 </div>
                 
@@ -730,7 +892,22 @@
                 }
             });
         });
+        
+        // Mobile dropdown toggle
+        document.querySelectorAll('.nav-links li').forEach(item => {
+            if (window.innerWidth <= 768) {
+                const link = item.querySelector('a');
+                if (link && item.querySelector('.dropdown-menu')) {
+                    link.addEventListener('click', function(e) {
+                        if (this.getAttribute('href') === '#') {
+                            e.preventDefault();
+                            const dropdown = this.parentNode.querySelector('.dropdown-menu');
+                            dropdown.classList.toggle('active');
+                        }
+                    });
+                }
+            }
+        });
     </script>
 </body>
-
 </html>
