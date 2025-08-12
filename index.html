@@ -539,21 +539,68 @@
             color: #94a3b8;
         }
         
+        /* Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .header-container {
-                flex-direction: column;
-                text-align: center;
+                padding: 0.5rem 1rem;
             }
             
             .nav-links {
-                margin-top: 1.5rem;
-                flex-wrap: wrap;
-                justify-content: center;
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem;
+                transition: all 0.5s ease;
+                margin-top: 0;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
             }
             
             .nav-links li {
-                margin: 0.5rem 1rem;
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            /* Dropdown menu for mobile */
+            .dropdown-menu {
+                position: static;
+                display: none;
+                width: 100%;
+                box-shadow: none;
+                background-color: rgba(0,0,0,0.2);
+                padding-left: 1rem;
+                margin-top: 0.5rem;
+                border-radius: 0;
+            }
+            
+            .dropdown-menu.active {
+                display: block;
+            }
+            
+            .dropdown-menu a {
+                color: white !important;
+                padding: 0.5rem 0;
             }
             
             section {
@@ -568,22 +615,11 @@
                 font-size: 2.2rem;
             }
             
-            /* Mobile dropdown */
-            .dropdown-menu {
-                position: static;
-                display: none;
-                width: 100%;
-                box-shadow: none;
-                border-radius: 0;
-                padding: 0;
-            }
-            
-            .nav-links li:hover .dropdown-menu {
-                display: none;
-            }
-            
-            .dropdown-menu.active {
-                display: block;
+            .features-grid,
+            .tools-grid,
+            .download-options,
+            .support-options {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -600,6 +636,9 @@
                     Star <span>Sender</span>
                 </div>
             </a>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
@@ -678,7 +717,7 @@
                         <i class="fas fa-envelope-open-text"></i>
                     </div>
                     <h3 class="tool-name">Test mail import </h3>
-                    <p class="tool-description">By this software  you can import  test email  in your data file.</p>
+                    <p class="tool-description">With this software you can enter test email  into the data file.</p>
                     <a href="https://drive.google.com/file/d/1KPcB7laU_c1gr-WWiV3i-kuPDldL-Fmv/view" class="btn btn-free" target="_blank">
                         <i class="fas fa-download"></i> Download Now
                     </a>
@@ -888,27 +927,47 @@
                             top: target.offsetTop - 80, // Adjust for header height
                             behavior: 'smooth'
                         });
+                        
+                        // Close mobile menu if open
+                        document.querySelector('.nav-links').classList.remove('active');
                     }
                 }
             });
         });
         
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
         // Mobile dropdown toggle
-        document.querySelectorAll('.nav-links li').forEach(item => {
-            if (window.innerWidth <= 768) {
+        document.querySelectorAll('.nav-links > li').forEach(item => {
+            const dropdown = item.querySelector('.dropdown-menu');
+            if (dropdown) {
                 const link = item.querySelector('a');
-                if (link && item.querySelector('.dropdown-menu')) {
-                    link.addEventListener('click', function(e) {
-                        if (this.getAttribute('href') === '#') {
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        // Only prevent default if there's a dropdown
+                        if (dropdown) {
                             e.preventDefault();
-                            const dropdown = this.parentNode.querySelector('.dropdown-menu');
+                            e.stopPropagation();
                             dropdown.classList.toggle('active');
                         }
-                    });
+                    }
+                });
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                const navLinks = document.querySelector('.nav-links');
+                const menuToggle = document.querySelector('.menu-toggle');
+                if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+                    navLinks.classList.remove('active');
                 }
             }
         });
     </script>
 </body>
 </html>
-
