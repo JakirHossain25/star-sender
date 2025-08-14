@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main Pages -->
+  <!-- মূল পেজসমূহ -->
   <url>
     <loc>https://www.starsender.store/</loc>
     <lastmod>2025-08-14</lastmod>
@@ -36,27 +36,5 @@
     <lastmod>2025-08-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  
-  <!-- External Resources (from your dropdown menu) -->
-  <url>
-    <loc>https://dev-pocket24hour.pantheonsite.io/</loc>
-    <lastmod>2025-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Download Links -->
-  <url>
-    <loc>https://drive.google.com/file/d/1KPcB7laU_c1gr-WWiV3i-kuPDldL-Fmv/view</loc>
-    <lastmod>2025-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://drive.google.com/file/d/1Hq4caTtEXsyqHZSSEb4qPWwn0BA4v_wu/view</loc>
-    <lastmod>2025-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>
