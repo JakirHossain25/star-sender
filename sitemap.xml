@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- হোমপেজ -->
+  <url>
+    <loc>https://www.starsender.store/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ডাউনলোড পেজ (যদি থাকে) -->
+  <url>
+    <loc>https://www.starsender.store/download.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- অন্যান্য গুরুত্বপূর্ণ পেজগুলো এখানে যোগ করুন -->
+  <!-- উদাহরণ: 
+  <url>
+    <loc>https://www.starsender.store/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  -->
+
+</urlset>
