@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Sender Pro - Notice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #ea580c;
+            --light: #f8fafc;
+            --dark: #1e293b;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--dark);
+            color: white;
+            line-height: 1.6;
+        }
+        #notice {
+            padding: 9rem 0 4rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .notice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .coming-soon {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .notice-text {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .date-scroll {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+        .date-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 1.2rem;
+            color: var(--accent);
+            will-change: transform;
+            padding-left: 100%;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #c2410c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn-free {
+            background-color: var(--primary);
+        }
+        .btn-free:hover {
+            background-color: var(--secondary);
+        }
+        @media (max-width: 768px) {
+            .coming-soon { font-size: 2.5rem; }
+            .notice-text { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <section id="notice">
+        <div class="notice-container">
+            <div class="coming-soon">Coming Soon</div>
+            <div class="notice-text">We're working on something amazing! Stay tuned for updates.</div>
+            
+            <div class="date-scroll">
+                <div class="date-marquee">
+                    API : software v5 camming soon.... | API: software v4  available | 
+                    Updating . starsender V5 API software | 
+                    Maintenance Window: Every friday 2:00-4:00 AM UTC
+                </div>
+            </div>
+            
+            <a href="index.html" class="btn btn-free">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const marquee = document.querySelector('.date-marquee');
+            const content = marquee.textContent;
+            const speed = 70; // pixels per second
+            
+            // Double the content for seamless looping
+            marquee.textContent = content + ' ' + content;
+            
+            let startTime = null;
+            let contentWidth = marquee.scrollWidth / 2;
+            let animationId = null;
+            
+            function animateMarquee(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const progress = (elapsed * speed / 1000) % contentWidth;
+                
+                marquee.style.transform = `translateX(-${progress}px)`;
+                animationId = requestAnimationFrame(animateMarquee);
+            }
+            
+            function startAnimation() {
+                if (animationId) cancelAnimationFrame(animationId);
+                contentWidth = marquee.scrollWidth / 2;
+                startTime = null;
+                animationId = requestAnimationFrame(animateMarquee);
+            }
+            
+            // Start animation and handle resize
+            startAnimation();
+            window.addEventListener('resize', startAnimation);
+            
+            // Force hardware acceleration
+            marquee.style.transform = 'translateZ(0)';
+        });
+    </script>
+</body>
+</html>
